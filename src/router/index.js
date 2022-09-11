@@ -24,6 +24,13 @@ export const constantRoutes = [
     meta: { title: "详情" },
     hidden: true,
   },
+  {
+    path: "/subject/heart",
+    name: "Heart",
+    component: () => import("@/views/subject/heart.vue"),
+    meta: { title: "国家标准化心血管病诊疗中心" },
+    hidden: true,
+  },
 ];
 const createRouter = () =>
   new Router({
