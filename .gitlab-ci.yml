@@ -1,0 +1,82 @@
+# 固定配置，无需修改
+variables:
+  IMAGE_NAME: hop-oper-admin
+  IMAGE_VERSION: dev
+  DOCKER_HOST: tcp://docker:2375
+  DOCKER_TLS_CERTDIR: ""
+  CI_RELEASE_REGISTRY: 172.16.1.8:6001
+  VARIABLES_FILE: ./variables.env
+  SONAR_HOST_URL: http://172.16.1.20:9002
+  SONAR_TOKEN: 0070bcf3ba7326c96ebd9a02c8458dec5301b68d
+  SONAR_VERSION: "4.7"
+  DEV_NGINX_HOST: "172.16.1.20"
+  DEV_NGINX_USER: "devued"
+  DEV_NGINX_PWD: "Dv123456"
+
+# 固定配置，无需修改
+services:
+  - name: docker:dind
+    alias: docker
+    command: ["--tls=false"]
+
+stages:
+  - build_npm
+  - sonarqube-check
+  - deploy
+
+# 编译并发布包
+build_npm:
+  image: circleci/node:16.13
+  stage: build_npm
+  tags:
+    - ghp-ci
+  only:
+    - master
+    - merge_requests
+    - feature/add_ci
+  script:
+    - npm install
+    - npm run build:prod
+    - npm run lint
+    - cd ./dist && zip ../web.zip -r ./*
+  artifacts:
+    paths:
+      - report.json
+      - ./dist
+
+sonarqube-check:
+  image:
+    name: sonarsource/sonar-scanner-cli:${SONAR_VERSION}
+    entrypoint: [""]
+  stage: sonarqube-check
+  tags:
+    - ghp-ci
+  variables:
+    SONAR_USER_HOME: "${CI_PROJECT_DIR}/.sonar"
+    GIT_DEPTH: "0"
+  cache:
+    key: "${CI_JOB_NAME}"
+    paths:
+      - .sonar/cache
+  script:
+    - sonar-scanner
+  allow_failure: true
+  only:
+    - master
+    - project/*/master
+    - feature/add_ci
+  artifacts:
+    paths:
+      - ./dist
+deploy_dev:
+  image: ictu/sshpass
+  stage: deploy
+  tags:
+    - ghp-ci
+  only:
+    refs:
+      - master
+      - feature/add_ci
+  script:
+    - sshpass -p ${DEV_NGINX_PWD} ssh -o StrictHostKeyChecking=no ${DEV_NGINX_USER}@${DEV_NGINX_HOST} 'mkdir -p /data/client/${IMAGE_NAME}'
+    - sshpass -p ${DEV_NGINX_PWD} scp -o StrictHostKeyChecking=no -r ./dist/* ${DEV_NGINX_USER}@${DEV_NGINX_HOST}:/data/client/${IMAGE_NAME}

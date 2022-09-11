@@ -1,0 +1,204 @@
+.el-breadcrumb__inner,
+.el-breadcrumb__inner a {
+  font-weight: 400 !important;
+}
+
+.el-upload {
+  input[type="file"] {
+    display: none !important;
+  }
+}
+
+.el-upload__input {
+  display: none;
+}
+
+.el-dialog {
+  transform: none;
+  left: 0;
+  position: relative;
+  margin: 0 auto;
+}
+
+.upload-container {
+  .el-upload {
+    width: 100%;
+    .el-upload-dragger {
+      width: 100%;
+      height: 200px;
+    }
+  }
+}
+.dialog-btn {
+  text-align: end;
+}
+
+.el-dropdown-menu {
+  a {
+    display: block;
+  }
+}
+
+.el-range-separator {
+  box-sizing: content-box;
+}
+.group-list,
+.panel {
+  padding: 25px 30px;
+  background-color: #ffffffff;
+  margin: 10px;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+  opacity: 1;
+  border-radius: 6px 6px 6px 6px;
+  .button-group {
+    margin-bottom: 15px;
+  }
+}
+.pagination-contain {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 25px;
+  & > div:first-child {
+    color: #0000006d;
+  }
+  & > div:last-child {
+    flex-grow: 1;
+    text-align: right;
+  }
+}
+.el-table--striped .el-table__body tr.el-table__row--striped td {
+  background: #f3f8ff;
+}
+
+.el-table thead {
+  font-size: 12px;
+  font-family: Source Han Sans CN;
+  font-weight: 500;
+  color: $fontcolor;
+  opacity: 1;
+}
+
+.el-table {
+  font-size: 12px;
+  font-family: Source Han Sans CN;
+  font-weight: 400;
+  color: $fontcolor;
+  opacity: 1;
+}
+
+.el-button--text {
+  font-size: 12px;
+  font-family: Source Han Sans CN;
+  font-weight: 500;
+  line-height: 20px;
+  color: $theme;
+}
+
+.el-dialog__headerbtn .el-dialog__close {
+  color: $fontcolor;
+  padding-right: 14px;
+}
+
+.el-dialog__title {
+  font-size: 14px;
+  font-family: Source Han Sans CN;
+  font-weight: 500;
+  color: $fontcolor;
+  opacity: 1;
+  padding-left: 14px;
+}
+
+.el-dialog__body {
+  padding-top: 0px !important;
+  padding-left: 34px !important;
+  padding-right: 34px !important;
+}
+.el-form-item__label {
+  font-size: 12px;
+  font-family: Source Han Sans CN;
+  line-height: 44px;
+  color: $fontcolor;
+  opacity: 1;
+  width: 100px;
+  text-align: center;
+}
+
+.el-button + .el-button {
+  margin-left: 20px;
+}
+
+.el-pagination.is-background.el-pagination--small .el-pager li,
+.el-pagination.is-background.el-pagination--small .btn-next,
+.el-pagination.is-background.el-pagination--small .btn-prev {
+  margin: 0px;
+  color: $theme;
+  background-color: transparent !important;
+  border: 1px solid #f5f5f5;
+}
+
+.el-tabs__nav-wrap::after {
+  background: #fff;
+}
+
+h1 {
+  padding-left: 20px;
+}
+
+h2 {
+  padding-left: 10px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+.el-progress {
+  pointer-events: none;
+}
+.daily-report {
+  .el-table .cell {
+    text-align: center !important;
+  }
+}
+
+.el-switch__label {
+  position: absolute;
+  display: none;
+  font-size: 11px !important;
+  color: #fff !important;
+}
+
+.el-switch__label * {
+  font-size: 11px !important;
+}
+
+.el-switch__label--right {
+  z-index: 1;
+  top: 0.5px;
+}
+
+.el-switch__label--left {
+  z-index: 1;
+  left: 23px;
+  top: 0.5px;
+}
+
+.el-switch__label.is-active {
+  display: block;
+}
+
+.el-switch__core {
+  width: 45px !important;
+  height: 22px;
+  border: 2px solid #dcdfe6;
+  border-radius: 13px;
+}
+
+.el-tag {
+  border-radius: 2px;
+}

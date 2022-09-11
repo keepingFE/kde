@@ -1,0 +1,218 @@
+#app {
+  .main-container {
+    min-height: calc(100vh - 56px);
+    margin-top: 56px;
+    box-sizing: border-box;
+    transition: margin-left 0.28s;
+    background: #e1e9f5;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .sidebar-container {
+    transition: width 0.28s;
+    width: $sideBarWidth !important;
+    background-color: #fff;
+    font-size: 0px;
+    top: 56px;
+    bottom: 0;
+    overflow: hidden;
+    box-shadow: 4px 0px 4px 1px rgba(56, 98, 191, 0.06);
+    .horizontal-collapse-transition {
+      transition: 0s width ease-in-out, 0s padding-left ease-in-out,
+        0s padding-right ease-in-out;
+    }
+
+    .scrollbar-wrapper {
+      overflow-x: hidden !important;
+    }
+
+    .el-scrollbar__bar.is-vertical {
+      right: 0px;
+    }
+
+    .el-scrollbar {
+      height: 100%;
+    }
+
+    &.has-logo {
+      .el-scrollbar {
+        height: calc(100% - 50px);
+      }
+    }
+
+    .is-horizontal {
+      display: none;
+    }
+
+    a {
+      display: inline-block;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .svg-icon {
+      margin-right: 15px;
+    }
+
+    .sub-el-icon {
+      margin-right: 12px;
+      margin-left: -2px;
+    }
+
+    .el-menu {
+      border: none;
+      height: 100%;
+      width: 100% !important;
+      color: $subMenuActiveText !important;
+    }
+
+    .submenu-title-noDropdown,
+    .el-submenu__title {
+      background: #ffffff !important;
+      color: #666666 !important;
+      &:hover {
+        color: $theme;
+        background-color: #e1e7f4 !important;
+      }
+    }
+
+    .is-active > .el-submenu__title {
+      color: #333333 !important;
+
+      .svg-icon {
+        color: $theme;
+      }
+    }
+
+    & .nest-menu .el-submenu > .el-submenu__title,
+    & .el-submenu .el-menu-item {
+      min-width: $sideBarWidth !important;
+      &:hover {
+        background-color: #e1e7f4 !important;
+      }
+    }
+    .nest-menu {
+      .el-menu-item {
+        &.is-active {
+          font-weight: 500;
+          border-right: 2px solid $theme;
+          background-color: #e1e7f4 !important;
+        }
+      }
+    }
+  }
+
+  .hideSidebar {
+    .sidebar-container {
+      width: 54px !important;
+    }
+
+    .submenu-title-noDropdown {
+      padding: 0 !important;
+      position: relative;
+      .el-tooltip {
+        padding: 0 !important;
+        .sub-el-icon {
+          margin-left: 15px;
+        }
+      }
+    }
+
+    .el-submenu {
+      overflow: hidden;
+      & > .el-submenu__title {
+        padding: 0 !important;
+        .svg-icon {
+          margin-left: 15px;
+        }
+        .sub-el-icon {
+          margin-left: 14px;
+        }
+        .el-submenu__icon-arrow {
+          display: none;
+        }
+      }
+    }
+
+    .el-menu--collapse {
+      .el-submenu {
+        & > .el-submenu__title {
+          & > span {
+            height: 0;
+            width: 0;
+            overflow: hidden;
+            visibility: hidden;
+            display: inline-block;
+          }
+        }
+      }
+    }
+  }
+
+  .el-menu--collapse .el-menu .el-submenu {
+    min-width: $sideBarWidth !important;
+  }
+
+  .mobile {
+    .main-container {
+      margin-left: 0px;
+    }
+
+    .sidebar-container {
+      transition: transform 0.28s;
+      width: $sideBarWidth !important;
+    }
+
+    &.hideSidebar {
+      .sidebar-container {
+        pointer-events: none;
+        transition-duration: 0.3s;
+        transform: translate3d(-$sideBarWidth, 0, 0);
+      }
+    }
+  }
+
+  .withoutAnimation {
+    .main-container,
+    .sidebar-container {
+      transition: none;
+    }
+  }
+}
+
+.el-menu--vertical {
+  & > .el-menu {
+    .svg-icon {
+      margin-right: 16px;
+    }
+    .sub-el-icon {
+      margin-right: 12px;
+      margin-left: -2px;
+    }
+  }
+
+  .nest-menu .el-submenu > .el-submenu__title,
+  .el-menu-item {
+    &:hover {
+      background-color: $menuHover !important;
+    }
+  }
+
+  > .el-menu--popup {
+    max-height: 100vh;
+    overflow-y: auto;
+    &::-webkit-scrollbar-track-piece {
+      background: #d3dce6;
+    }
+
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #99a9bf;
+      border-radius: 20px;
+    }
+  }
+}

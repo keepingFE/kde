@@ -1,0 +1,206 @@
+/* 清除浮动 */
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+.bold {
+  font-weight: bold;
+}
+.clearfix:after {
+  display: block;
+  clear: both;
+  content: "";
+  visibility: hidden;
+  height: 0;
+}
+
+.clearfix {
+  zoom: 1;
+}
+
+.d-n {
+  display: none;
+}
+
+.d-f {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+}
+
+.middle-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-start {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.flex-start-center {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.shrink-0 {
+  flex-shrink: 0;
+}
+
+.t-l {
+  text-align: left !important;
+}
+
+.t-c {
+  text-align: center !important;
+}
+
+.t-r {
+  text-align: right !important;
+}
+p,
+ul,
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@for $i from 1 through 64 {
+  .m-t-#{$i} {
+    margin-top: 1px * $i;
+  }
+  .m-r-#{$i} {
+    margin-right: 1px * $i;
+  }
+  .m-l-#{$i} {
+    margin-left: 1px * $i;
+  }
+  .m-b-#{$i} {
+    margin-bottom: 1px * $i;
+  }
+  .m-x-#{$i} {
+    margin: 0 1px * $i;
+  }
+  .m-y-#{$i} {
+    margin: 1px * $i 0;
+  }
+  .m-#{$i} {
+    margin: 1px * $i;
+  }
+  .p-t-#{$i} {
+    padding-top: 1px * $i;
+  }
+  .p-r-#{$i} {
+    padding-right: 1px * $i;
+  }
+  .p-l-#{$i} {
+    padding-left: 1px * $i;
+  }
+  .p-b-#{$i} {
+    padding-bottom: 1px * $i;
+  }
+  .p-x-#{$i} {
+    padding: 0 1px * $i;
+  }
+  .p-y-#{$i} {
+    padding: 1px * $i 0;
+  }
+  .p-#{$i} {
+    padding: 1px * $i;
+  }
+}
+
+@for $i from 12 through 64 {
+  .font-#{$i} {
+    font-size: 1px * $i;
+  }
+}
+
+.opera-box {
+  .btn {
+    width: 70px;
+    display: inline-block;
+    cursor: pointer;
+    color: $theme;
+  }
+}
+
+.margin0 {
+  margin: 0;
+}
+.mr10 {
+  margin-right: 10px;
+}
+.ml10 {
+  margin-left: 10px;
+}
+.mb10 {
+  margin-bottom: 10px;
+}
+
+.width100 {
+  width: 100% !important;
+}
+
+.over-view {
+  background: white;
+  width: 100%;
+  height: 100%;
+  padding: 0 25px 10px 25px;
+}
+
+.edit-container {
+  background: white;
+  width: 100%;
+  height: 100%;
+  padding: 20px 25px 10px 25px;
+}
+
+.table-operate-btn {
+  cursor: pointer;
+  color: #1890ff;
+}
+
+.padding-10 {
+  padding-bottom: 10px;
+}
+.f14 {
+  font-size: 14px;
+}
+
+.detail-btn {
+  cursor: pointer;
+  color: #1890ff;
+}
+.text-left {
+  text-align: left;
+}
+.mb0 {
+  margin-bottom: 0;
+}
+
+.page-box {
+  background: #fff;
+  padding: 20px;
+}
+.base-info {
+  padding-top: 2px !important;
+}
