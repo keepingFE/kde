@@ -19,7 +19,7 @@
 .head {
   display: flex;
   align-items: center;
-  max-width: 1080px;
+  max-width: 1460px;
   height: 70px;
   box-sizing: border-box;
   margin: 0 auto;
