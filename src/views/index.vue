@@ -4,6 +4,7 @@
     <div class="banner">
       <img src="../assets/image/banner.png" alt="" />
     </div>
+    <Footer />
   </div>
 </template>
 <style lang="scss" scoped>
@@ -45,9 +46,10 @@
 </style>
 <script>
 import HeadBar from "@/components/head.vue";
+import Footer from "@/components/footer.vue";
 export default {
   name: "Index",
-  components: { HeadBar },
+  components: { HeadBar, Footer },
   data() {
     return {
       rules: {
