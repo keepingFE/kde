@@ -7,6 +7,167 @@
         <video controls height="694" src="../assets/about.mp4"></video>
       </div>
     </div>
+    <div class="hsp-banner">
+      <div class="common-title">
+        <p class="first">MEDICAL CENTER</p>
+        <p class="sec">医学中心</p>
+      </div>
+      <ul class="card-list">
+        <li
+          v-for="(item, index) of list"
+          :key="index"
+          @click="getCur(item, index)"
+        >
+          <img :src="item.image" alt="" />
+        </li>
+        <li class="more-card">
+          <p>更多学科<br />正在建设中....</p>
+        </li>
+      </ul>
+
+      <div v-if="current !== null">
+        <p class="item-cont">
+          {{ list[current].content }}
+        </p>
+        <div class="btn-wrap">
+          <span class="btn" @click="handleDetail(curCard)">
+            <span>查看详情</span>
+            <span class="ico"></span>
+          </span>
+          <span class="btn deep" @click="handleEnter(curCard)">
+            <span>申报入口</span>
+            <span class="ico"></span>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="join-wrap">
+      <div class="common-title left">
+        <p class="first">MEDICAL INSTITUTIONS</p>
+        <p class="sec">参与医疗机构</p>
+      </div>
+      <div class="org-wrap w1440">
+        <ul>
+          <li class="first">
+            <div
+              class="img-wrap"
+              v-for="(first, idx1) of org.first"
+              :key="idx1"
+              @click="getOrg(first)"
+            >
+              <img :src="first.image" alt="" />
+              <img :src="first.active" alt="" />
+            </div>
+          </li>
+          <li class="second">
+            <div
+              class="img-wrap"
+              v-for="(sec, idx2) of org.second"
+              :key="idx2"
+              @click="getOrg(sec)"
+            >
+              <img :src="sec.image" alt="" />
+              <img :src="sec.active" alt="" />
+            </div>
+          </li>
+          <li class="third">
+            <div
+              class="img-wrap"
+              v-for="(thr, idx3) of org.third"
+              :key="idx3"
+              @click="getOrg(thr)"
+            >
+              <img :src="thr.image" alt="" />
+              <img :src="thr.active" alt="" />
+            </div>
+          </li>
+        </ul>
+        <div class="info" v-if="curOrg">
+          <p>{{ curOrg.content }}</p>
+          <div class="btn-wrap">
+            <span>
+              <span>查看详情</span>
+              <i class="ico"></i>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="header-wrap">
+      <div class="w1440 inner">
+        <div class="left">
+          <div class="title-wrap">
+            <p class="first">DISCIPLINE LEADERS</p>
+            <p>部分学科带头人</p>
+          </div>
+          <div class="profile">
+            <p class="title">{{ curPerson.name }} {{ curPerson.title }}</p>
+            <p class="detail">{{ curPerson.content }}</p>
+          </div>
+          <div class="img-list-wrap">
+            <i class="left-swd"></i>
+            <ul>
+              <li
+                v-for="(imgItem, index) of personList"
+                :key="index"
+                @click="getCurPerson(imgItem, index)"
+                :class="{ active: index === curIndex }"
+              >
+                <img :src="imgItem.small" />
+              </li>
+            </ul>
+            <i class="right-swd"></i>
+          </div>
+        </div>
+        <div class="right">
+          <div class="img-wp">
+            <img :src="curPerson.image" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hospital-banner">
+      <div class="common-title">
+        <p class="first">WALKING IN THE HOSPPITAL</p>
+        <p class="sec">行走的医院</p>
+      </div>
+      <div class="hospital-content">
+        <div class="left">
+          <img src="@/assets/image/home/hospital.png" />
+        </div>
+        <div class="right">
+          “行走的医院”是由中国农工民主党主导发起的医疗健康精准扶贫项目。项目通过一整套智能化科技装备（全科医生助诊包、全科医生工作站及配套的综合检测设备等）及业务一体化系统平台（“互联网+医疗”平台、多个信息化业务管理系统），为基层医生及基层医疗卫生机构提供医疗服务能力支撑，提升基层百姓对优质力医疗资源的可及性。<br />
+          “行走的医院”通过为基层医生配备智能化全科医生助诊包（可实现24项血液化验、11项尿液检验、心电图检查、超声检查……村医背起这个包可送医上门、入户筛查[31]）并提供完善的设备使用培训，赋能基层医生把优质医疗资源和服务背进百姓家里。同时，“行走的医院”配备“互联网+医疗”平台，整合专家资源及各级医疗机构建立医疗联合体，推动形成分级诊疗就医新秩序，助力实现“大病不出县、小病不出村”，解决百姓看病难、看病贵问题。
+        </div>
+      </div>
+    </div>
+    <div class="case-banner">
+      <div class="common-title">
+        <p class="first">KEY CASES</p>
+        <p class="sec">重点案例</p>
+      </div>
+      <div class="case-content">
+        <div class="left">
+          <img class="case-img" :src="currentCase.imgUrl" />
+          <div class="case-desc">
+            <div class="title">{{ currentCase.title }}</div>
+            <div class="desc-content" v-html="currentCase.content"></div>
+          </div>
+        </div>
+        <div class="right">
+          <div
+            class="right-item"
+            v-for="(item, index) in caseList"
+            :class="{ active: activeCaseIndex === index }"
+            @click="activeCaseIndex = index"
+            :key="index"
+          >
+            <div class="title">{{ item.title }}</div>
+            <div class="desc" v-html="item.content"></div>
+          </div>
+        </div>
+      </div>
+    </div>
     <Footer />
   </div>
 </template>

@@ -17,11 +17,11 @@ export default async function request({
     method,
     ...others,
   };
-  const token = sessionStorage.getItem("token");
-  if (config.needToken && token) {
+  const token = sessionStorage.getItem("ecoToken");
+  if (token) {
     axios.defaults.headers.common["X-AccessToken"] = token;
   }
-  axios.defaults.headers["ServerCode"] = window.config.serverCode || "HOP";
+  axios.defaults.headers["ServerCode"] = window.config.serverCode || "HOP-ECOM";
   if (method === "get") {
     config.params = data;
   } else {
@@ -33,24 +33,48 @@ export default async function request({
       .request(config)
       .then((res) => {
         const result = res.data;
-        if (result) {
+        if (result && result.success) {
           if (result.code === "S0000") {
             resolve(result);
           } else {
             if (result.code === "T0000") {
-              sessionStorage.removeItem("token");
-              router.replace("/login");
+              sessionStorage.removeItem("ecoToken");
+              if (self != top) {
+                //iframe中操作
+                window.parent.postMessage(
+                  {
+                    messageType: "TOKEN_OVERDUE",
+                  },
+                  "*"
+                );
+              } else {
+                router.push("/login");
+              }
             } else {
               reject(result);
             }
           }
         } else {
           let msg = result.msg || "数据获取失败，请重试！";
+          if (result.code === "T0000") {
+            sessionStorage.removeItem("ecoToken");
+            if (self != top) {
+              //iframe中操作
+              window.parent.postMessage(
+                {
+                  messageType: "TOKEN_OVERDUE",
+                },
+                "*"
+              );
+            } else {
+              router.push("/login");
+            }
+          }
           if (showErrorMessage) {
             Message({
               message: msg,
               type: "error",
-              duration: 3 * 1000,
+              duration: 5 * 1000,
             });
           }
           reject(result);
@@ -62,7 +86,7 @@ export default async function request({
           Message({
             message: msg,
             type: "error",
-            duration: 3 * 1000,
+            duration: 5 * 1000,
           });
         }
         reject(msg);

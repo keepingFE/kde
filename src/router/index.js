@@ -25,6 +25,33 @@ export const constantRoutes = [
     hidden: true,
   },
   {
+    path: "/settled",
+    name: "Settled",
+    component: () => import("@/views/settled.vue"),
+    meta: { title: "国家级重点学科工程-申报预登记" },
+    hidden: true,
+  },
+  {
+    path: "/hospital",
+    name: "hospital",
+    component: () => import("@/views/hospital.vue"),
+    meta: { title: "大病不出县“行走的医院”项目-申报预登记" },
+    hidden: true,
+  },
+  {
+    path: "/success",
+    name: "success",
+    component: () => import("@/views/success.vue"),
+    meta: { title: "申报预登记" },
+    hidden: true,
+  },
+  {
+    path: "/login",
+    name: "Login",
+    component: () => import("@/views/login"),
+    meta: { title: "登录" },
+  },
+  {
     path: "/subject/heart",
     name: "Heart",
     component: () => import("@/views/subject/heart.vue"),
