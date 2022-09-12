@@ -14,7 +14,7 @@ export const constantRoutes = [
     path: "/",
     name: "Index",
     component: Index,
-    meta: { title: "首页" },
+    meta: { title: "国家级重点学科工程" },
     hidden: true,
   },
   {
@@ -27,8 +27,22 @@ export const constantRoutes = [
   {
     path: "/subject/heart",
     name: "Heart",
-    component: () => import("@/views/subject/heart.vue"),
+    component: () => import("@/views/subject/heart/index.vue"),
     meta: { title: "国家标准化心血管病诊疗中心" },
+    hidden: true,
+  },
+  {
+    path: "/subject/women",
+    name: "Women",
+    component: () => import("@/views/subject/women.vue"),
+    meta: { title: "国家标准化妇科疾病诊疗中心" },
+    hidden: true,
+  },
+  {
+    path: "/subject/brain",
+    name: "Brain",
+    component: () => import("@/views/subject/brain.vue"),
+    meta: { title: "脑重大疾病标准化防治中心" },
     hidden: true,
   },
 ];
