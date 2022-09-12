@@ -222,9 +222,11 @@
   .card-list {
     max-width: 1446px;
     margin: 0 auto;
-    overflow: hidden;
+    display: flex;
+    justify-content: left;
+    flex-wrap: wrap;
     li {
-      float: left;
+      flex: 1;
       width: 255px;
       height: 176px;
       margin-right: 30px;
@@ -370,6 +372,7 @@
       height: 42px;
       line-height: 42px;
       border-radius: 0px 0px 0px 0px;
+      margin-bottom: 60px;
       opacity: 1;
       color: #35227b;
       cursor: pointer;
