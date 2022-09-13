@@ -23,19 +23,23 @@
       </div>
       <div class="org-content">
         <div class="org-item">
-          <img src="@/assets/image/heart/heart-org1.png" />
+          <img class="img-origin" src="@/assets/image/heart/heart-org1.png" />
+          <img class="img-active" src="@/assets/image/heart/heart-org1-1.png" />
           <div class="org-title">中国人民解放军总医院</div>
         </div>
         <div class="org-item">
-          <img src="@/assets/image/heart/heart-org2.png" />
+          <img class="img-origin" src="@/assets/image/heart/heart-org2.png" />
+          <img class="img-active" src="@/assets/image/heart/heart-org2-1.png" />
           <div class="org-title">安贞医院</div>
         </div>
         <div class="org-item">
-          <img src="@/assets/image/heart/heart-org3.png" />
+          <img class="img-origin" src="@/assets/image/heart/heart-org3.png" />
+          <img class="img-active" src="@/assets/image/heart/heart-org3-1.png" />
           <div class="org-title">中国心血管健康联盟</div>
         </div>
         <div class="org-item">
-          <img src="@/assets/image/heart/heart-org4.png" />
+          <img class="img-origin" src="@/assets/image/heart/heart-org4.png" />
+          <img class="img-active" src="@/assets/image/heart/heart-org4-1.png" />
           <div class="org-title">复旦大学</div>
         </div>
       </div>
@@ -141,8 +145,10 @@
   }
 }
 .heart-banner {
-  background: url("@/assets/image/heart/heart-banner1.png") no-repeat;
-  background-size: 100% 100%;
+  background-image: url("@/assets/image/heart/heart-banner1.png"),
+    url("@/assets/image/heart/heart-banner1-1.png");
+  background-repeat: no-repeat, no-repeat;
+  background-size: 100% 100%, 100% 100%;
   padding-top: 20px;
   padding-bottom: 250px;
   max-width: 1920px;
@@ -177,6 +183,7 @@
     .org-item {
       width: 340px;
       margin-bottom: 10px;
+      cursor: pointer;
 
       &:hover {
         box-shadow: -6px -6px 12px 1px rgba(0, 0, 0, 0.1);
@@ -184,11 +191,29 @@
           color: #fff;
           background: #35227b;
         }
+
+        .img-origin {
+          display: none;
+        }
+
+        .img-active {
+          display: block;
+        }
       }
 
       img {
         width: 100%;
+        max-width: 338px;
+        max-height: 245px;
         display: block;
+      }
+
+      .img-origin {
+        display: block;
+      }
+
+      .img-active {
+        display: none;
       }
 
       .org-title {
@@ -210,12 +235,19 @@
   .member-content {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: self-start;
 
     .member-item {
       display: flex;
       padding: 10px;
       background: #fff;
-      max-width: 700px;
+      margin-bottom: 10px;
+      max-width: 690px;
+
+      &:first-child {
+        margin-top: 20px;
+      }
 
       img {
         width: 300px;
@@ -223,14 +255,14 @@
       }
 
       .member-desc {
-        padding: 30px;
+        padding: 20px 30px;
         font-size: 18px;
         line-height: 30px;
 
         .title {
           font-size: 24px;
           font-weight: bold;
-          margin-bottom: 20px;
+          margin-bottom: 10px;
         }
       }
     }
@@ -269,22 +301,9 @@ export default {
   name: "Index",
   components: { HeadBar, Footer },
   data() {
-    return {
-      rules: {
-        loginName: [
-          { required: true, message: "请输入用户名", trigger: "blur" },
-        ],
-        password: [{ required: true, message: "请输入密码", trigger: "blur" }],
-      },
-    };
+    return {};
   },
   mounted() {},
-  methods: {
-    loginSubmit() {
-      this.$refs["ruleForm"].validate((valid) => {
-        if (!valid) return;
-      });
-    },
-  },
+  methods: {},
 };
 </script>
