@@ -37,9 +37,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <a class="desc"
-        >苏ICP备10216010号-1 Copyright ©2021 Garea Microsystem 版权所有</a
-      >
+      <div class="desc">苏ICP备10216010号-1 Copyright ©2022 Xxxxx 版权所有</div>
     </div>
   </div>
 </template>
@@ -64,6 +62,7 @@
 
   .footer-content {
     padding: 1.48vh;
+    height: 9.25vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -76,7 +75,7 @@
     .info-content {
       display: flex;
       align-items: center;
-      line-height: 23px;
+      line-height: 20px;
 
       .info-content-item {
         display: flex;
@@ -109,12 +108,22 @@
 
   .footer-bottom {
     background: #e6e6e6;
+    color: #666666;
     height: 2.59vh;
+    line-height: 2.59vh;
     text-align: center;
 
     .desc {
       font-size: 12px;
       transform: scale(0.8);
+    }
+  }
+}
+@media (max-width: 1366px) {
+  .footer {
+    .footer-content {
+      padding-left: 20px;
+      padding-right: 20px;
     }
   }
 }

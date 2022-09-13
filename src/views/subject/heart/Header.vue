@@ -3,7 +3,7 @@
     <div class="header-content">
       <div class="left">
         <div class="logo-content">
-          <img class="logo" src="@/assets/image/heart/logo.png" />
+          <img class="logo" src="@/assets/image/logo.png" />
           <div class="title">国家标准化心血管病诊疗中心</div>
         </div>
         <el-divider direction="vertical"></el-divider>
@@ -36,7 +36,7 @@
 
   .header-content {
     width: 1366px;
-    padding: 15px 0;
+    padding: 1.39vh 0;
     margin: auto;
     display: flex;
     justify-content: space-between;
@@ -48,7 +48,7 @@
 
     .el-divider--vertical {
       width: 2px;
-      height: 50px;
+      height: 4.63vh;
       margin: 0 20px;
       background-color: #35227b;
     }
@@ -58,34 +58,34 @@
       flex-direction: column;
       align-items: center;
       .logo {
-        width: 180px;
+        width: 16.67vh;
       }
       .title {
-        font-size: 20px;
+        font-size: 1.85vh;
         font-weight: bold;
-        margin-top: 4px;
-        line-height: 20px;
+        margin-top: 0.37vh;
+        line-height: 1.85vh;
       }
     }
 
     .subject-cloud {
-      width: 130px;
-      height: 44px;
+      width: 12.5vh;
+      height: 4.07vh;
       cursor: pointer;
       background: #35227b;
-      border-radius: 32px 32px 32px 32px;
+      border-radius: 2.96vh;
       display: flex;
       align-items: center;
-      padding: 0 10px;
+      padding: 0 0.92vh;
       color: #fff;
 
       .cloud-text {
-        font-size: 20px;
-        line-height: 20px;
+        font-size: 1.85vh;
+        line-height: 1.85vh;
       }
 
       .cloud {
-        width: 37px;
+        width: 3.42vh;
         margin-right: 10px;
       }
     }
@@ -96,19 +96,27 @@
     .el-menu--horizontal {
       border-bottom: 0;
       .el-menu-item {
-        height: 50px;
-        line-height: 50px;
-        border-bottom: 4px solid transparent;
+        height: 4.62vh;
+        line-height: 4.62vh;
+        border-bottom: 0.37vh solid transparent;
       }
 
       .el-menu-item.is-active {
-        border-bottom: 4px solid #35227b;
+        border-bottom: 0.37vh solid #35227b;
       }
     }
 
     .el-button {
       border-radius: 0;
       margin-left: 40px;
+    }
+  }
+}
+@media (max-width: 1366px) {
+  .header {
+    .header-content {
+      padding-left: 20px;
+      padding-right: 20px;
     }
   }
 }
